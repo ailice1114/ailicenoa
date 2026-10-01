@@ -604,7 +604,7 @@ const SITE = {
    画像がない間は、色つきのプレースホルダーが表示されます。 */
 /* ── News（お知らせ。新しい順に追加してください） ── */
 const NEWS = [
-  { date:"2026-09-27", text:"公式サイトを公開しました。" }
+  { date:"2026-10-02", text:"公式サイトを公開しました。" }
 ];
 
 const MEMBERS = [
@@ -661,6 +661,7 @@ const SCHEDULE = [
   { date:"2026-09-27", type:"live",  title:"『Look! Look! Look!コ…" },
   { date:"2026-09-30", type:"live",  title:"ライブ予定" },
   { date:"2026-10-03", type:"event", title:"無銭ぶろじぇくと!! vol.11" },
+  { date:"2026-10-04", type:"live",  title:"ライブ予定" },
   { date:"2026-10-10", type:"event", title:"大福廻遊" },
   { date:"2026-10-16", type:"live",  title:"3rdワンマンライブ" }
 ];
@@ -892,14 +893,7 @@ renderSchedule();
 if (SITE.timetree) $("#moreWrap").innerHTML = `<a class="btn ghost" href="${esc(SITE.timetree)}"${ext(SITE.timetree)}>TimeTreeですべて見る</a>`;
 
 /* ── Schedule: 月間カレンダー ── */
-const firstEvent = [...SCHEDULE].sort((a, b) => a.date.localeCompare(b.date))[0];
-let calYear, calMonth; // calMonth は 0-11
-if (firstEvent) {
-  const [y, m] = firstEvent.date.split("-").map(Number);
-  calYear = y; calMonth = m - 1;
-} else {
-  calYear = todayDate.getFullYear(); calMonth = todayDate.getMonth();
-}
+let calYear = todayDate.getFullYear(), calMonth = todayDate.getMonth(); // calMonth は 0-11（今月を初期表示）
 
 function renderCalendar() {
   $("#calMonthLabel").textContent = `${calYear}.${String(calMonth + 1).padStart(2, "0")}`;
@@ -914,6 +908,8 @@ function renderCalendar() {
     const evHtml = dayEvents.map((e) => `<div class="cal-event ${esc(e.type)}" title="${esc(e.title)}">${esc(e.title)}</div>`).join("");
     cells.push(`<div class="cal-cell${isToday ? " today" : ""}"><span class="cal-daynum">${day}</span>${evHtml}</div>`);
   }
+  const trailing = (7 - (cells.length % 7)) % 7;
+  for (let i = 0; i < trailing; i++) cells.push(`<div class="cal-cell empty"></div>`);
   $("#calGrid").innerHTML = cells.join("");
 }
 $("#calPrev").addEventListener("click", () => {
