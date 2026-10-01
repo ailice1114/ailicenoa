@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AiliceNoa OFFICIAL SITE</title>
 <meta name="description" content="7人組アイドルグループ AiliceNoa の公式サイト。メンバー、楽曲、スケジュール、グッズの最新情報をお届けします。">
-<meta name="theme-color" content="#f7eef7">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="AiliceNoa OFFICIAL SITE">
 <meta property="og:description" content="それが一瞬（ひととき）の夢物語でも…">
 <meta property="og:type" content="website">
@@ -17,12 +17,13 @@
 
 <style>
 :root{
-  --bg:#f7eef7;
-  --panel:#fffafd;
-  --line:rgba(64,38,63,.14);
-  --text:#40263f;
-  --muted:#8d6f92;
-  --accent:#e07fc0;
+  --bg:#ffffff;
+  --panel:#ffffff;
+  --line:rgba(20,20,20,.16);
+  --text:#1c1c1c;
+  --muted:#8a8a8a;
+  --accent:#e8a4cb;
+  --ink:#1c1c1c;
   --accent2:#a98be6;
   --scrim:255,250,253;
 
@@ -46,13 +47,7 @@ body{
   margin:0;color:var(--text);
   font-family:var(--sans);font-size:16px;line-height:1.85;
   -webkit-font-smoothing:antialiased;
-  background:
-    radial-gradient(ellipse 38% 30% at 8% -6%, #fbdcee 0%, transparent 70%),
-    radial-gradient(ellipse 34% 28% at 100% 14%, #e6dcfa 0%, transparent 70%),
-    radial-gradient(ellipse 32% 26% at 4% 70%, #ffe6ee 0%, transparent 70%),
-    radial-gradient(ellipse 36% 28% at 98% 96%, #e9dcf5 0%, transparent 70%),
-    #fdfbfd;
-  background-attachment:fixed;
+  background:var(--bg);
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
@@ -69,16 +64,17 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
   position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:50;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 clamp(16px,4vw,40px);
-  background:rgba(var(--scrim),.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
+  background:rgba(20,17,19,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 .logo{font-family:var(--en-serif);font-style:italic;font-weight:600;font-size:26px;letter-spacing:.02em;
-  display:inline-flex;align-items:center;gap:8px}
+  display:inline-flex;align-items:center;gap:8px;color:#f8f2f6}
+.logo-mark{filter:invert(1) brightness(1.4)}
 .logo-mark{height:28px;width:auto;display:block}
 .nav ul{display:flex;gap:clamp(20px,3vw,40px)}
-.nav a{font-family:var(--en-serif);font-style:italic;font-weight:500;font-size:20px;color:var(--muted);transition:color .2s}
+.nav a{font-family:var(--en-serif);font-style:italic;font-weight:500;font-size:20px;color:#cfc3ca;transition:color .2s}
 .nav a:hover{color:var(--accent)}
-.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:14px}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 16px;font-size:14px;color:#f8f2f6}
 
 /* ───────── ヒーロー（アー写を主役に） ───────── */
 .hero{
@@ -121,14 +117,22 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   padding:11px 30px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.06em;
-  color:var(--text);border:1px solid transparent;
-  background:linear-gradient(90deg,var(--accent) 0 50%,var(--accent2) 50% 100%);
-  box-shadow:0 6px 16px -8px color-mix(in srgb,var(--accent) 60%,transparent);
-  transition:filter .2s,box-shadow .2s,transform .15s;
+  color:#fff;border:1px solid var(--ink);
+  background:var(--ink);
+  box-shadow:none;
+  transition:opacity .2s,box-shadow .2s,transform .15s;
 }
-.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
-.btn.ghost{background:var(--panel);color:var(--text);border-color:var(--line);box-shadow:none}
-.btn.ghost:hover{border-color:var(--accent);color:#a4488a}
+.btn:hover{opacity:.82;transform:translateY(-1px)}
+.btn.ghost{background:var(--panel);color:var(--ink);border-color:var(--ink);box-shadow:none}
+.btn.ghost:hover{border-color:var(--accent);color:#c0578f}
+
+/* News（pixelribbon.com のINFORMATION欄を参考） */
+.news-section{padding-top:clamp(28px,4vw,44px);padding-bottom:0}
+.sec-head-sm h2{font-size:clamp(28px,4.5vw,40px)}
+.news-list{border-top:1px solid var(--line)}
+.news-item{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}
+.news-item time{flex:none;font-family:var(--en-serif);font-style:italic;color:var(--muted);font-size:13px;width:88px}
+.news-item p{margin:0;color:var(--text)}
 
 /* クイックナビ（avam-fc.com参考） */
 .quick-nav{
@@ -148,10 +152,14 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
 
 /* 7色のライン */
 .spectrum{
-  height:3px;
+  position:relative;height:6px;
   background:linear-gradient(90deg,
     var(--c-kii) 0 14.28%, var(--c-yoru) 0 28.57%, var(--c-mizuki) 0 42.85%,
     var(--c-suna) 0 57.14%, var(--c-en) 0 71.42%, var(--c-sirayuki) 0 85.71%, var(--c-utena) 0 100%);
+}
+.spectrum::after{
+  content:"";position:absolute;left:0;right:0;top:50%;height:0;
+  border-top:1.5px dashed rgba(255,255,255,.75);transform:translateY(-.75px);
 }
 
 /* ───────── セクション共通 ───────── */
@@ -160,6 +168,10 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
 .sec-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 20px;margin-bottom:clamp(22px,3.5vw,36px)}
 .sec-head h2{font-family:var(--en-serif);font-style:italic;font-weight:500;
   font-size:clamp(48px,8vw,84px);line-height:1;letter-spacing:.01em}
+.sec-head h2::before,.sec-head h2::after{content:"✦";display:inline-block;font-style:normal;
+  font-size:.28em;color:var(--accent);vertical-align:middle;opacity:.75}
+.sec-head h2::before{margin-right:.22em;transform:translateY(-.35em)}
+.sec-head h2::after{margin-left:.22em;transform:translateY(.15em)}
 .sec-head p{color:var(--muted);font-size:15px}
 
 /* ───────── Members（写真グリッド＋タップで詳細） ───────── */
@@ -174,9 +186,10 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
 .member-card .photo-wrap{
   position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:8px;
   background:linear-gradient(165deg,color-mix(in srgb,var(--mc) 30%,var(--panel)),var(--panel) 80%);
-  border:1px solid color-mix(in srgb,var(--mc) 32%,transparent);transition:border-color .2s,transform .2s;
+  border:1px solid color-mix(in srgb,var(--mc) 32%,transparent);transition:border-color .2s,transform .2s,box-shadow .2s;
 }
-.member-card .card-open:hover .photo-wrap{border-color:var(--mc);transform:translateY(-3px)}
+.member-card .card-open:hover .photo-wrap{border-color:var(--mc);transform:translateY(-3px);
+  box-shadow:0 14px 28px -16px color-mix(in srgb,var(--mc) 55%,transparent)}
 .member-card .photo-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .4s}
 .member-card .card-open:hover .photo-wrap img{transform:scale(1.05)}
 .member-card .mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
@@ -216,6 +229,7 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
 .colorname{font-family:var(--en-serif);font-style:italic;font-weight:600;font-size:22px;line-height:1.2;color:var(--mc)}
 .modal-body h3{margin-top:4px;font-family:var(--jp-serif);font-weight:700;font-size:clamp(24px,4vw,32px);letter-spacing:.03em}
 .mcatch{margin-top:8px;font-family:var(--jp-serif);font-size:16px;color:var(--text)}
+.mcatch::before{content:"♡ ";color:var(--mc)}
 .profile{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font-size:14px;color:var(--muted)}
 .profile dt{color:var(--muted)}
 .profile dd{color:var(--text)}
@@ -349,7 +363,9 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
   transition:border-color .2s;
 }
 .item-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.item:hover .item-img{border-color:var(--mc)}
+.item:hover .item-img{border-color:var(--mc);transform:translateY(-3px);
+  box-shadow:0 14px 24px -16px color-mix(in srgb,var(--mc) 55%,transparent)}
+.item-img{transition:border-color .2s,transform .2s,box-shadow .2s}
 .item.sold .item-img img{filter:grayscale(.4);opacity:.55}
 .sold-badge{position:absolute;top:10px;left:10px;z-index:2;font-family:var(--en-serif);font-style:italic;font-weight:600;
   font-size:12px;letter-spacing:.08em;padding:2px 12px;border-radius:999px;background:var(--text);color:var(--panel)}
@@ -358,26 +374,34 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
 .price{font-family:var(--en-serif);font-weight:500;font-size:22px;color:var(--accent)}
 
 /* ───────── フッター ───────── */
-.footer{padding:56px 0 40px;text-align:center}
-.footer-emblem{height:64px;width:auto;margin:0 auto 12px;display:block}
-.footer .logo{display:inline-flex;font-size:34px}
+.footer{padding:56px 0 40px;text-align:center;background:#14111a;color:#cfc3ca}
+.footer-emblem{height:64px;width:auto;margin:0 auto 12px;display:block;filter:invert(1) brightness(1.4)}
+.footer .logo{display:inline-flex;font-size:34px;color:#f8f2f6}
 .footer .logo-mark{display:none}
 .social{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin:22px 0 26px}
-.social a{font-family:var(--en-serif);font-style:italic;font-weight:500;font-size:20px;color:var(--muted);transition:color .2s}
+.social a{font-family:var(--en-serif);font-style:italic;font-weight:500;font-size:20px;color:#cfc3ca;transition:color .2s}
 .social a:hover{color:var(--accent)}
 .contact{font-size:14px;margin-bottom:14px}
-.contact a{color:var(--muted);border-bottom:1px solid var(--line);transition:color .2s,border-color .2s}
+.contact a{color:#cfc3ca;border-bottom:1px solid rgba(255,255,255,.25);transition:color .2s,border-color .2s}
 .contact a:hover{color:var(--accent);border-color:var(--accent)}
-.copy{font-size:13px;color:var(--muted)}
+.copy{font-size:13px;color:#8a818b}
 
 /* ───────── スマホ ───────── */
 @media (max-width:760px){
   .menu-btn{display:block}
-  .nav{position:fixed;inset:var(--header-h) 0 auto 0;background:rgba(var(--scrim),.97);border-bottom:1px solid var(--line);
+  .nav{position:fixed;inset:var(--header-h) 0 auto 0;background:rgba(20,17,19,.98);border-bottom:1px solid rgba(255,255,255,.08);
     padding:8px 24px 20px;display:none}
   .nav.open{display:block}
   .nav ul{flex-direction:column;gap:0}
   .nav a{display:block;padding:12px 0;font-size:24px;border-bottom:1px solid var(--line)}
+
+  /* ヒーロー：全体アー写が見切れないよう、写真の比率に合わせて高さを短くする */
+  .hero{aspect-ratio:3/2;min-height:0}
+  .hero-media img{object-position:50% 28%;animation:none}
+  .hero-content{padding-top:calc(var(--header-h) + 8px);padding-bottom:16px}
+  .wordmark{font-size:13px}
+  .catch{margin-top:8px;font-size:15px;line-height:1.7}
+  .hero-sub{display:none}
 
   .member-grid{grid-template-columns:repeat(2,1fr)}
   .feature{grid-template-columns:1fr}
@@ -388,6 +412,16 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
   .ev{grid-template-columns:76px 1fr}
   .ev-date{font-size:32px}
   .ev-link{grid-column:2;justify-self:start}
+
+  /* カレンダー：行を詰めて、空セルの網掛けを外してすっきりさせる */
+  .cal-cell{min-height:38px;padding:3px}
+  .cal-cell.empty{background:none}
+  .cal-daynum{font-size:10px}
+  .cal-event{font-size:7.5px;padding:1px 2px;margin-top:2px;border-radius:3px}
+  .cal-head p{font-size:16px}
+
+  /* グッズ：1列表示になっていたのを2列に */
+  .goods{grid-template-columns:repeat(2,1fr);gap:16px 12px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -429,6 +463,14 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
       </svg>
       <h1 class="wordmark">AILICENOA</h1>
       <p class="catch">それが<ruby>一瞬<rt>ひととき</rt></ruby>の夢物語でも…</p>
+    </div>
+  </section>
+
+  <!-- ═══ News ═══ -->
+  <section class="section news-section">
+    <div class="wrap">
+      <div class="sec-head sec-head-sm"><h2>News</h2></div>
+      <ul class="news-list" id="newsList"></ul>
     </div>
   </section>
 
@@ -560,6 +602,11 @@ const SITE = {
 /* ── メンバー ─────────────────────────────
    img は assets/images/members/ にこの名前で画像を置けば自動で表示されます。
    画像がない間は、色つきのプレースホルダーが表示されます。 */
+/* ── News（お知らせ。新しい順に追加してください） ── */
+const NEWS = [
+  { date:"2026-09-27", text:"公式サイトを公開しました。" }
+];
+
 const MEMBERS = [
   { id:"kii",      name:"ひめかきい", color:"pink",   colorName:"Pink",   catch:"登場から5秒でズキュンズキュン♡🗯", img:"assets/images/members/kii.jpg",
     links:[{label:"X",url:"https://x.com/ailice_kii"},{label:"Instagram",url:"https://www.instagram.com/kiichama_.o0?stkn=Ymo0azJyd3dvZXdn"}] },
@@ -664,6 +711,11 @@ menuBtn.addEventListener("click", () => {
   menuBtn.setAttribute("aria-expanded", open);
 });
 nav.addEventListener("click", (e) => { if (e.target.tagName === "A") { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); } });
+
+/* ── News ── */
+$("#newsList").innerHTML = [...NEWS].sort((a, b) => b.date.localeCompare(a.date)).map((n) => `
+  <li class="news-item"><time datetime="${esc(n.date)}">${esc(n.date.replaceAll("-", "."))}</time><p>${esc(n.text)}</p></li>
+`).join("");
 
 /* ── Members ── */
 const memberGrid = $("#memberGrid");
