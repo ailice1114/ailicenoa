@@ -206,6 +206,17 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
 .card-social svg{width:15px;height:15px}
 .card-social:hover{background:var(--mc);transform:translateY(-2px)}
 
+/* 画像拡大モーダル（特典会レギュレーションなど） */
+.image-modal{position:fixed;inset:0;z-index:85;display:flex;align-items:center;justify-content:center;padding:20px}
+.image-modal[hidden]{display:none}
+.image-modal-backdrop{position:absolute;inset:0;background:rgba(20,17,19,.75)}
+.image-modal-inner{position:relative;z-index:1;max-width:min(900px,92vw);max-height:88vh}
+.image-modal-inner img{max-width:100%;max-height:88vh;border-radius:8px;display:block;margin:0 auto}
+.image-modal .modal-close{
+  position:absolute;top:-14px;right:-14px;width:34px;height:34px;border-radius:50%;
+  background:#fff;border:1px solid var(--line);font-size:18px;line-height:1;color:#2a1226;cursor:pointer;
+}
+
 /* 詳細モーダル */
 .member-modal{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:20px}
 .member-modal[hidden]{display:none}
@@ -542,8 +553,17 @@ h1,h2,h3,p,dl,dd,dt{margin:0}
       <div class="filters" id="filters" role="group" aria-label="予定の種類で絞り込む"></div>
       <ul class="events" id="events" aria-live="polite"></ul>
       <p class="more" id="moreWrap"></p>
+      <p class="more"><button type="button" class="btn ghost" id="openRegulation">特典会レギュレーションを見る</button></p>
     </div>
   </section>
+
+  <div class="image-modal" id="regulationModal" hidden>
+    <div class="image-modal-backdrop" id="regulationBackdrop"></div>
+    <div class="image-modal-inner">
+      <button class="modal-close" id="regulationClose" type="button" aria-label="閉じる">×</button>
+      <img src="assets/images/other/regulation.jpg" alt="特典会レギュレーション">
+    </div>
+  </div>
 
   <!-- ═══ Movie ═══ -->
   <section class="section" id="movie">
@@ -604,7 +624,7 @@ const SITE = {
    画像がない間は、色つきのプレースホルダーが表示されます。 */
 /* ── News（お知らせ。新しい順に追加してください） ── */
 const NEWS = [
-  { date:"2026-10-02", text:"公式サイトを公開しました。" }
+  { date:"2026-10-05", text:"公式サイトを公開しました。" }
 ];
 
 const MEMBERS = [
@@ -921,6 +941,13 @@ $("#calNext").addEventListener("click", () => {
   renderCalendar();
 });
 renderCalendar();
+
+/* ── 特典会レギュレーション画像モーダル ── */
+const regulationModal = $("#regulationModal");
+$("#openRegulation").addEventListener("click", () => { regulationModal.hidden = false; });
+$("#regulationClose").addEventListener("click", () => { regulationModal.hidden = true; });
+$("#regulationBackdrop").addEventListener("click", () => { regulationModal.hidden = true; });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !regulationModal.hidden) regulationModal.hidden = true; });
 
 /* ── Goods ── */
 $("#goodsGrid").innerHTML = GOODS.map((g) => {
